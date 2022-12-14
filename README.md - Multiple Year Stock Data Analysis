@@ -1,0 +1,31 @@
+# Multiple Year Stock Data Analysis
+
+The object of this project is to gather the given data associated with the ticker symbol and compile all the prices for a singular ticker in order to find the yearly change, percentage change, and total stock volume.
+
+* I first associated all my variables to to their associated integral parts. I used mostly Doubles and Longs since it stores larger integers and will avoid error:overflow.
+
+* I set totalvolume to 0 so it starts with no value before calculating for every row and tickerTableRow to 2 since that is the row all the data will be inputed. tickerTableRow is a variable created so the everytime a new ticker symbol is detected then a new row for the output is created.
+
+* Created a for loop for each worksheet so data is outputted for 2018, 2019, and 2020
+
+* last row is created so it counts from the very last cell on the worksheet and works its way up, so when it detects the first cell with data, it will automatically declare that as the last row.
+
+* I have assigned labeled to specific cells in order to label where the data will be outputted. Note "ws." indicates that it will run through for all worksheets.
+
+* openPrice is assigned to a value before the loop so the code knows where to begin. Once the for loop initiates, it will begin going to the next open price after the new ticker is indicated. This part is shows with  openPrice = ws.Cells(i + 1, 3).Value.
+
+* A for loop is created to go through every row until the last row to gather data.
+
+* Within the for loop as it runs through every row:
+    
+    An if statement is created to show that if the next cell (of the ticker symbol) does not match the pervious cell value then it will begin initiating the following code. However if the cell values do match, then during that time all the volumes of the ticker symbol will be added. In the if statement, it only executes when the tickers do not match and detects a new one. Then it begins to create the output for yearly change, percentage change, and total volume as explained below:
+    
+    
+            * closePrice has been assigned to the very last closing price of that specific ticker when a new ticker symbol is detected. 
+            * The ticker symbols have been assigned to where to output on the excel sheet when a new one is detected. Notice how tickerTableRow is within range. This variable will adds one and creates a new row. So it tells the variable to stay in the same column, but move to the next row once a new ticker symbol is created to input the next set of data.
+            * Total volume will add the total of the given volume collected plus the last cell of the matching ticker symbol. After it will output the total volume number on the sheet of that ticker.
+            * Yearly change takes the difference of the very first open price from the very last close price. It then outputs that onto the sheet in the designated row and column. It has also been formatted so it can show the result to 2 decimal places.
+            * An if statement is shown saying if the yearl change output is negative then the cell will be red, but if it ends up being positive, the the cell will be green.
+            * Another if statement is created so it avoids any divisibilty by 0 when calculating the percentage change. After the calculation, it will be outputted in the designated cell and it has been formatted as a percentage to 2 decimal places.
+            * total volume gets reset to 0 so it can start a fresh calculation for the new ticker symbol.
+            
